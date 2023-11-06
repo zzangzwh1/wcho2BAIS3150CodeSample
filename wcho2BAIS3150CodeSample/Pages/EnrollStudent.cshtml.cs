@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
+using wcho2BAIS3150CodeSample.Models;
 using wcho2BAIS3150CodeSample.TechService;
 
 namespace wcho2BAIS3150CodeSample.Pages
@@ -24,6 +25,10 @@ namespace wcho2BAIS3150CodeSample.Pages
         [Required]
         [RegularExpression(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", ErrorMessage = "Email Format required ex) wcho2@nait.ca")]
         public string Email { set; get; } = string.Empty;
+
+        [BindProperty]
+        [Required]
+        public string programCode { set; get; } = string.Empty;
         public string Message { set; get; } = string.Empty;
         public void OnGet()
         {
@@ -35,12 +40,33 @@ namespace wcho2BAIS3150CodeSample.Pages
         }
         public void OnPost() 
         {
-
-
-            if (ModelState.IsValid)
+            BCS requestDirector = new BCS();
+            Student accepetedStudent = new()
             {
+                StudentId = StudentID,
+                FirstName = FirstName,
+                lastName = LastName,
+                Email = Email
+
+            };
+           /* Models.Program p = new Models.Program();
+            p.ProgramCode = ;*/
+            bool confirmation = requestDirector.EnrollStudent(accepetedStudent, programCode);
+
+            if (ModelState.IsValid && confirmation)
+            {
+               
+              
                 Message = " ***  Successs ***";
- 
+                Programs programs = new Programs();
+                string query = @"select ProgramCode from Program ";
+                programCodes = programs.GetProgramCode(query);
+                StudentID = string.Empty;
+                FirstName = string.Empty;
+                LastName = string.Empty;    
+                Email = string.Empty;   
+
+
             }
             else
             {

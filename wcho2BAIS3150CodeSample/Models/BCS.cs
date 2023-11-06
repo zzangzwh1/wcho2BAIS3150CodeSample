@@ -7,9 +7,9 @@ namespace wcho2BAIS3150CodeSample.Models
     {
         public bool EnrollStudent(Student acceptedStudent, string programCode)
         {
-            bool success = false;
+        
             Students studentManager = new Students();
-           // bool success = studentManager.AddStudent(acceptedStudent, programCode);
+            bool success = studentManager.AddStudent(acceptedStudent, programCode);
 
             return success;
 
