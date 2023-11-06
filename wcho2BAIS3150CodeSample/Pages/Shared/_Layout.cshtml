@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <link rel="icon" href="~/images/BAISTFavoritesIcon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="~/css/StyleSheet.css" />
+    <script type="text/javascript">
+        //script form Layout
+
+    </script>
+  @*  @if (IsSectionDefined("createProgramContentscriptContent"))
+    {
+    @RenderSection("createProgramContentscriptContent")
+        
+    }*@
+    @RenderSection("createProgramContentscriptContent",required:false)
+    @RenderSection("scriptContent",required:false)
+</head>
+<body>
+    <header>
+
+        <h1>BAIS3150 UI Code Sample Assignment</h1>
+
+    </header>
+    <nav>
+
+        <div>
+            <ul>
+                <li><a href="~/Index">Home</a></li>
+                <li><a href="~/CreateProgram">Create Program</a></li>
+                <li><a href="~/EnrollStudent">Enroll Students</a></li>
+                <li><a href="~/FindStudent">Find Students</a></li>
+                <li><a href="~/FindProgram">Modify Students</a></li>
+                <li><a href="~/ModifyStudent">Remove Students</a></li>
+                <li><a href="~/FindProgram">Find Program</a></li>
+
+            </ul>
+
+
+        </div>
+       
+    </nav>
+    <main>
+
+        @RenderBody()
+
+        @if (IsSectionDefined("indexContent"))    
+               @RenderSection("indexContent")  
+        else if (IsSectionDefined("createProgramContent"))        
+            @RenderSection("createProgramContent")        
+        
+        else if (IsSectionDefined("EnrollStudentsContent"))        
+            @RenderSection("EnrollStudentsContent")
+            
+        
+    </main>
+    <footer>
+
+        <p>BAIS3150 UI Code Sample Assignment created by Mike Wonhyuk Cho</p>
+
+
+    </footer>
+
+</body>
+</html>

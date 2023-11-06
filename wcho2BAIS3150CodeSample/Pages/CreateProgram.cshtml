@@ -1,0 +1,76 @@
+﻿@page
+@model wcho2BAIS3150CodeSample.Pages.CreateProgramModel
+@{
+    ViewData["Title"] = "Create Program";
+}
+@section createProgramContentscriptContent
+    {
+    <script type="text/javascript">
+
+        function isValidate(aForm) {
+            let hasValidationError = true;
+            let isProgramCodeValid = isProgramCodeValicate(aForm);
+            let isDescriptionValid = isDescriptionValidate(aForm);
+            if (!isProgramCodeValid) {
+                alert("Program code field is required!")
+                hasValidationError = false;
+            }
+            else if (!isDescriptionValid) {
+                alert("Description field is required!")
+                hasValidationError = false;
+            }
+            return hasValidationError;
+        }
+        function isProgramCodeValicate(aForm) {
+            let programCode = aForm.programCode;
+            if (programCode.value === '') {
+                return false;
+            }
+            return true;
+        }
+        function isDescriptionValidate(aForm) {
+            let description = aForm.description;
+            if (description.value === '') {
+                return false;
+            }
+            return true;
+        }
+
+    </script>
+}
+
+@section createProgramContent
+    {
+    <div class="divHeader">
+        <h1>Create a Program</h1>
+        <form name="createForm" method="post" onsubmit="return isValidate(this);">
+            <div>
+                <lable for="_ProgramCode">Program Code :  </lable>
+                <input type="text" name="programCode" id="_ProgramCode" class="inputText" />
+            </div>
+            <div>
+                <label for="_Description">Description: </label>
+                <input type="text" name="description" class="inputText" />
+            </div>
+            <div>
+                <br />
+                <input type="submit" name="Submit" value="Submit" class="buttons">
+            </div>
+        </form>
+
+
+
+
+    </div>
+    <div class="messages">
+        <p> @Model.Message </p>
+    </div>
+
+
+
+
+
+
+
+}
+
