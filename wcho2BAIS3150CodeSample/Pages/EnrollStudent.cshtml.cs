@@ -35,19 +35,7 @@ namespace wcho2BAIS3150CodeSample.Pages
         }
         public void OnPost() 
         {
-           string emailPattern = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
-            Regex emailRegex = new Regex(emailPattern);
-            if (FirstName == null || FirstName.Length == 0)
-                ModelState.AddModelError("FirstName", "firstName is required");
 
-            if (LastName == null || LastName.Length == 0)
-                ModelState.AddModelError("LastName", "lastName is required");
-
-            if (Email == null || Email.Length == 0 || !emailRegex.IsMatch(Email))
-            {
-                ModelState.AddModelError("Email", "Eamil is reuqired or invalid Format : ex)wcho2@nait.ca");
-
-            }
 
             if (ModelState.IsValid)
             {
