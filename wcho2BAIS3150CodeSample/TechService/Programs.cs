@@ -8,6 +8,8 @@ namespace wcho2BAIS3150CodeSample.TechService
 {
     public class Programs
     {
+
+
         #region AddProgram
         public bool AddProgram(string? programCode, string? description)
         {
@@ -126,6 +128,56 @@ namespace wcho2BAIS3150CodeSample.TechService
 
             return activeProgram;
 
+        }
+
+        #endregion
+
+        #region
+
+        public List<string> GetProgramCode(string query)
+        {
+            List<string> values = new List<string>();
+            using (SqlConnection conn = new SqlConnection(Students.connectionString))
+            {
+                conn.Open();
+                using (SqlCommand command = new SqlCommand(query, conn))
+                {
+                    try
+                    {
+
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+
+                            while (reader.Read())
+                            {
+                                for (int i = 0; i < reader.FieldCount; i++)
+                                {
+
+                                    values.Add((string)reader[i]);
+
+
+                                }
+
+                            }
+
+
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error Occurred - GetProgram : {ex.Message}");
+                    }
+                    finally
+                    {
+                        conn.Close();
+                    }
+
+                }
+            }
+
+            return values;
         }
 
         #endregion

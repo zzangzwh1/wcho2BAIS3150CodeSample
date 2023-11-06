@@ -4,11 +4,75 @@
 @{
     ViewData["Title"] = "Enroll Students";
 }
+@section enrollStudentContentscriptContent
+    {
+    <script src="~/libraries/jquery/jquery.js"> </script>
+    <script src="~/libraries/jquery-validate/jquery.validate.js"></script>
+    <script src="~/libraries/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
 @section EnrollStudentsContent
     {
     <div class="divHeader">
-    <h1>EnrollStudentsContent</h1>
-    <p>This is the main content for the EnrollStudentsContent page.</p>
+
+
+        <h1>Enroll Student</h1>
+        <!-- onsubmit="return isValidate(this);"-->
+        <form name="enrollForm" method="post" >
+            <div>
+                <lable for="_StudentID">Student ID :  </lable>
+                <input asp-for="StudentID" id="_StudentID" class="inputText" />
+
+
+            </div>
+            <div>
+                <label for="_FirstName">FirstName: </label>
+                <input asp-for="FirstName" class="inputText" id="_FirstName" />
+
+            </div>
+            <div>
+                <label for="_LastName">Last Name: </label>
+                <input asp-for="LastName" class="inputText" id="_LastName" />
+
+            </div>
+            <div>
+                <label for="_Email">Email: </label>
+                <input asp-for="Email" class="inputText" id="_Email" />
+
+
+            </div>
+            <br />
+            <div>
+                <label for="_ProgramCode"></label>
+                <select id="_ProgramCode" class="selectionProgramCode" style="width:100%;height:30px;">
+                    @foreach (var programCodes in Model.programCodes)
+                    {
+
+                        <option value="programCodes" class="selectionProgramCode">@programCodes</option>
+                    }
+
+                </select>
+            </div>
+            <div>
+                <br />
+                <input type="submit" name="Submit" value="Submit" class="buttons">
+            </div>
+
+            <span asp-validation-for="StudentID" style="color:red"></span><br />
+            <span asp-validation-for="FirstName" style="color:red"></span><br />
+            <span asp-validation-for="LastName" style="color:red"></span><br />
+            <span asp-validation-for="Email" style="color:red"></span><br />
+        </form>
+
+
+
+    </div>
+    <div>
+        <div class="messages">
+            <p style="color:red;"> @Model.Message </p>
+
+
+        </div>
+
     </div>
 
 }

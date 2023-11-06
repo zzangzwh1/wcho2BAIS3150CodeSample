@@ -43,14 +43,18 @@
     {
     <div class="divHeader">
         <h1>Create a Program</h1>
-        <form name="createForm" method="post" onsubmit="return isValidate(this);">
+        <!-- onsubmit="return isValidate(this);"-->
+        <form name="createForm" method="post" >
             <div>
                 <lable for="_ProgramCode">Program Code :  </lable>
                 <input type="text" name="programCode" id="_ProgramCode" class="inputText" />
+            
+            
             </div>
             <div>
                 <label for="_Description">Description: </label>
-                <input type="text" name="description" class="inputText" />
+                <input type="text" name="description" class="inputText" id="_Description" />
+              
             </div>
             <div>
                 <br />
@@ -60,10 +64,12 @@
 
 
 
-
+         
     </div>
     <div class="messages">
-        <p> @Model.Message </p>
+        <p style="color:red;"> @Model.Message </p>
+        <p style="color:red;">@Html.ValidationMessage("programCode")</p>
+        <p style="color:red;">@Html.ValidationMessage("description")</p>
     </div>
 
 
