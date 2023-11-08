@@ -51,13 +51,8 @@ namespace wcho2BAIS3150CodeSample.Pages
 
         public void OnPostUpdate()
         {
-            /*  ;    
-                    students.FirstName = _FirstName;
-                    students.lastName = _LastName;
-                    students.Email = _Email;*/
+    
 
-            // student
-            string s = "";
             students = new() { 
              StudentId = _StudentID,
              Email =_Email,

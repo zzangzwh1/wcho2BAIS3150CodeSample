@@ -27,9 +27,6 @@ namespace wcho2BAIS3150CodeSample.Pages
                 ModelState.AddModelError("description", "description is required");
             }
 
-            if (ModelState.IsValid)
-            {
-               
                 BCS requestDirector = new BCS();
                 Models.Program programs = new()
                 {

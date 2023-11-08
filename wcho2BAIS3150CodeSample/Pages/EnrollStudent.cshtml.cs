@@ -58,17 +58,12 @@ namespace wcho2BAIS3150CodeSample.Pages
             if (ModelState.IsValid && confirmation)
             {
                
-
                 Message = " ***  Successs ***";
                 GetProgramCode();
-
-                //does not clear
-                // Clear the input fields after success
                 StudentID = string.Empty;
                 _FirstName = string.Empty;
                 LastName = string.Empty;
                 Email = string.Empty;
-
 
 
             }

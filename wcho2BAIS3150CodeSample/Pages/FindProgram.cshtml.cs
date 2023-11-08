@@ -10,6 +10,5 @@ namespace wcho2BAIS3150CodeSample.Pages
         public void OnGet()
         {
         }
-      
     }
 }
