@@ -71,22 +71,13 @@ namespace wcho2BAIS3150CodeSample.Pages
             // int count = 0; 
             if (ModelState.IsValid || confirmation)
             {
-                // Update the student's information here
 
-                // Save the changes or perform your desired action
-                // requestDirector.UpdateStudent(students);
-
-                // Optionally, clear the form fields
-                // _FirstName = _LastName = _Email = string.Empty;
                 GetStudentID();
                 Message = "Students Info Is Updated";
             }
             else
             {
                 GetStudentID();
-              /*  GetStudentID();
-                BCS requestDirector = new BCS();
-                students = requestDirector.FindStudent(SelectValue);*/
                 Message = "Invalid";
             }
         }
