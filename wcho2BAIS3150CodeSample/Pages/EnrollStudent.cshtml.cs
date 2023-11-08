@@ -22,7 +22,6 @@ namespace wcho2BAIS3150CodeSample.Pages
         [Required]
         public string LastName { set; get; } = string.Empty;
         [BindProperty]
-        [Required]
         [RegularExpression(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", ErrorMessage = "Email Format required ex) wcho2@nait.ca")]
         public string Email { set; get; } = string.Empty;
 
@@ -32,9 +31,6 @@ namespace wcho2BAIS3150CodeSample.Pages
         public string Message { set; get; } = string.Empty;
         public void OnGet()
         {
-            Programs programs = new Programs();
-            string query = @"select ProgramCode from Program ";
-            programCodes = programs.GetProgramCode(query);
 
             Message = "Please Fill data into the input field";
         }
@@ -65,7 +61,6 @@ namespace wcho2BAIS3150CodeSample.Pages
                 FirstName = string.Empty;
                 LastName = string.Empty;    
                 Email = string.Empty;   
-
 
             }
             else
