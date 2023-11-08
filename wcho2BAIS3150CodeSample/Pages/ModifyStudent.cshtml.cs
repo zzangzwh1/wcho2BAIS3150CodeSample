@@ -32,7 +32,6 @@ namespace wcho2BAIS3150CodeSample.Pages
         public string _StudentID { get; set; }
 
         [BindProperty]
-       
         [RegularExpression(@"^(?:[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})?$", ErrorMessage = "Invalid email format, e.g., wcho2@nait.ca")]
         public string? _Email { get; set; }
 
