@@ -58,12 +58,8 @@
 
             @RenderSection("FindStudentsContent",required:false)
 
-            @if (IsSectionDefined("ModifyStudentsContent"))
-        {
-
-            @RenderSection("ModifyStudentsContent")
-        }
-
+            @RenderSection("ModifyStudentsContent", required: false)
+      
 
 
     </main>

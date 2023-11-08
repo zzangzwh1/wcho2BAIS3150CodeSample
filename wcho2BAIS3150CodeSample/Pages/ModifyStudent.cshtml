@@ -29,7 +29,7 @@
             <div>
                 <label for="SelectValue">Select Existing Student ID: </label>
              <select id="SelectValue" name="SelectValue" style="width:100%; height:30px;">
-                   @* <option value="" class="selectionProgramCode">Select Student ID</option>*@
+                    <option value="" class="selectionProgramCode">Select Student ID</option>
                     @foreach (var id in Model.StudentId)
                     {
                         <option value="@id" class="selectionProgramCode">@id</option>

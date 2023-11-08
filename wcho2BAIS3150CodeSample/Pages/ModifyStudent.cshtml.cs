@@ -31,7 +31,7 @@ namespace wcho2BAIS3150CodeSample.Pages
         [BindProperty]
         public string _StudentID { get; set; }
 
-        [BindProperty]
+        [BindProperty]       
         [RegularExpression(@"^(?:[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})?$", ErrorMessage = "Invalid email format, e.g., wcho2@nait.ca")]
         public string? _Email { get; set; }
 
@@ -70,13 +70,13 @@ namespace wcho2BAIS3150CodeSample.Pages
             // int count = 0; 
             if (ModelState.IsValid || confirmation)
             {
-
+                
                 GetStudentID();
                 Message = "Students Info Is Updated";
             }
             else
             {
-                GetStudentID();
+                GetStudentID();             
                 Message = "Invalid";
             }
         }
