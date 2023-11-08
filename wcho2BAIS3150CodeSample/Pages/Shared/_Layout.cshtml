@@ -10,10 +10,10 @@
         //script form Layout
 
     </script>
-  @*  @if (IsSectionDefined("createProgramContentscriptContent"))
+    @*  @if (IsSectionDefined("createProgramContentscriptContent"))
     {
     @RenderSection("createProgramContentscriptContent")
-        
+
     }*@
     @RenderSection("createProgramContentscriptContent",required:false)
     @RenderSection("scriptContent",required:false)
@@ -33,29 +33,44 @@
                 <li><a href="~/CreateProgram">Create Program</a></li>
                 <li><a href="~/EnrollStudent">Enroll Students</a></li>
                 <li><a href="~/FindStudent">Find Students</a></li>
-                <li><a href="~/FindProgram">Modify Students</a></li>
-                <li><a href="~/ModifyStudent">Remove Students</a></li>
+                <li><a href="~/ModifyStudent">Modify Students</a></li>
+                <li><a href="~/RemoveStudent">Remove Students</a></li>
                 <li><a href="~/FindProgram">Find Program</a></li>
 
             </ul>
 
 
         </div>
-       
+
     </nav>
     <main>
 
         @RenderBody()
 
-        @if (IsSectionDefined("indexContent"))    
-               @RenderSection("indexContent")  
-        else if (IsSectionDefined("createProgramContent"))        
-            @RenderSection("createProgramContent")        
-        
-        else if (IsSectionDefined("EnrollStudentsContent"))        
+        @if (IsSectionDefined("indexContent"))
+            @RenderSection("indexContent")
+        else if (IsSectionDefined("createProgramContent"))
+            @RenderSection("createProgramContent")
+
+        else if (IsSectionDefined("EnrollStudentsContent"))
             @RenderSection("EnrollStudentsContent")
-            
-        
+
+
+
+
+
+
+
+            @RenderSection("FindStudentsContent",required:false)
+
+            @if (IsSectionDefined("ModifyStudentsContent"))
+        {
+
+            @RenderSection("ModifyStudentsContent")
+        }
+
+
+
     </main>
     <footer>
 

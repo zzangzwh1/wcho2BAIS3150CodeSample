@@ -132,7 +132,7 @@ namespace wcho2BAIS3150CodeSample.TechService
 
         #endregion
 
-        #region
+        #region GetProgramCode for the DropList
 
         public List<string> GetProgramCode(string query)
         {

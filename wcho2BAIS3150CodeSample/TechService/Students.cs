@@ -6,10 +6,67 @@ namespace wcho2BAIS3150CodeSample.TechService
 {
     public class Students
     {
-        //  public static string connectionString = @"Persist Security Info=False; Server=dev1.baist.ca; Database=wcho2; User Id=wcho2; password=Whdnjsgur1!; ";
-        public static string connectionString = @"Persist Security Info=false; Integrated Security= true;  database= DataConnect; server=(localdb)\Local; ";
+          public static string connectionString = @"Persist Security Info=False; Server=dev1.baist.ca; Database=wcho2; User Id=wcho2; password=Whdnjsgur1!; ";
+        //public static string connectionString = @"Persist Security Info=false; Integrated Security= true;  database= DataConnect; server=(localdb)\Local; ";
 
         public string? ProgramCode { set; get; } = "";
+      //  public List<string> StudentInfoField = new List<string>(); 
+
+        #region StudentID
+        public List<string> GetSutdentID(string query) 
+        {
+
+            List<string> studentIDs = new List<string>();
+           
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                using (SqlCommand command = new SqlCommand(query, conn))
+                {
+                  
+                    try
+                    {                       
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                               
+                                while (reader.Read())
+                                {
+                                    //string? programCodes = "";
+                                    for (int i = 0; i < reader.FieldCount; i++)
+                                    {
+                                        studentIDs.Add((string)reader[i]);
+
+                                    }
+
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine($"There are No Student exists with that student ID try other Student ID");
+                            }
+
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error Occurred - {ex.Message}");
+                    }
+                    finally
+                    {
+                        conn.Close();
+                    }
+                }
+            }
+            return studentIDs;
+        }
+
+
+        #endregion
 
         #region AddStudent
         public bool AddStudent(Student acceptedStudent, string? programCode)
@@ -83,7 +140,7 @@ namespace wcho2BAIS3150CodeSample.TechService
                         {
                             if (reader.HasRows)
                             {
-                                for (int i = 0; i < reader.FieldCount; i++)
+                                for (int i = 0; i < reader.FieldCount-1; i++)
                                 {
                                     //if condition added so result output present equally
                                     if (i == reader.FieldCount - 2)
@@ -95,6 +152,7 @@ namespace wcho2BAIS3150CodeSample.TechService
 
                                         Console.Write($"{reader.GetName(i)}\t");
                                     }
+                                 //   StudentInfoField.Add((string)reader[i]);
                                 }
                                 while (reader.Read())
                                 {

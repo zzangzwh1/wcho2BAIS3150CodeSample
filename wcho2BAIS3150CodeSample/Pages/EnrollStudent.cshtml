@@ -4,6 +4,14 @@
 @{
     ViewData["Title"] = "Enroll Students";
 }
+@*<script>
+    function clearFormFields() {
+        document.getElementById("_StudentID").value = '';
+        document.getElementById("_FirstName").value = '';
+        document.getElementById("_LastName").value = '';
+        document.getElementById("_Email").value = '';
+    }
+</script>*@
 @section enrollStudentContentscriptContent
     {
     <script src="~/libraries/jquery/jquery.js"> </script>
@@ -20,24 +28,27 @@
         <form name="enrollForm" method="post" >
             <div>
                 <lable for="_StudentID">Student ID :  </lable>
-                <input asp-for="StudentID" id="_StudentID" class="inputText" />
+                <input asp-for="StudentID" name="StudentID" id="_StudentID" class="inputText"  />
 
 
             </div>
             <div>
                 <label for="_FirstName">FirstName: </label>
-                <input asp-for="FirstName" class="inputText" id="_FirstName" />
+                <input asp-for="_FirstName"  class="inputText" id="_FirstName" />
 
             </div>
             <div>
                 <label for="_LastName">Last Name: </label>
-                <input asp-for="LastName" class="inputText" id="_LastName" />
+                <input asp-for="LastName" name="LastName" class="inputText" id="_LastName" />
 
             </div>
             <div>
-                <label for="_Email">Email: </label>
-                <input asp-for="Email" class="inputText" id="_Email" />
+                <div>
+                    <label for="_Email">Email: </label>
+                    <input asp-for="Email" name="Email" class="inputText" id="_Email" />
 
+                    <span asp-validation-for="Email" style="color:red"></span><br />
+                </div>
 
             </div>
             <br />
@@ -58,7 +69,7 @@
             </div>
 
             <span asp-validation-for="StudentID" style="color:red"></span><br />
-            <span asp-validation-for="FirstName" style="color:red"></span><br />
+            <span asp-validation-for="_FirstName" style="color:red"></span><br />
             <span asp-validation-for="LastName" style="color:red"></span><br />
             <span asp-validation-for="Email" style="color:red"></span><br />
         </form>

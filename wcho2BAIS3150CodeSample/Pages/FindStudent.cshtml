@@ -1,4 +1,64 @@
-﻿@page
+﻿@page 
+
 @model wcho2BAIS3150CodeSample.Pages.FindStudentModel
 @{
+}
+
+@section FindStudentsContent{
+    <div class="divHeader">
+
+        <h1>Find Student</h1>
+        <form name="FindStudentForm" method="post">
+            <div>
+                <lable for="_StudentID">Select Exists Student ID :  </lable>
+                <select id="_StudentID" name="selectValue" style="width:100%;height:30px;">
+
+                    <option value="" class="selectionProgramCode" name="">Select Student ID</option>
+                    @foreach (var id in Model.StudentId)
+                    {
+
+                        <option value="@id" class="selectionProgramCode" name="selectedValue">@id</option>
+
+                    }
+                </select>
+
+
+            </div>
+            <br />
+            <div>
+                <br />
+                <input type="submit" name="Submit" value="Submit" class="buttons">
+            </div>
+
+        </form>
+    </div>
+    <div>
+    </div>
+    <div class="messages">
+        <p style="color:red;"> @Model.Message </p>
+
+    </div>
+    <div class="messages">
+    @if (Model.students != null)
+    {
+        <Table border="1">
+            <tr>
+                <td>Student ID</td>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Email</td>
+            </tr>
+            <tr>
+                <td>@Model.students.StudentId</td>
+                <td>@Model.students.FirstName</td>
+                <td>@Model.students.lastName</td>
+                <td>@Model.students.Email</td>
+            </tr>
+
+        </Table>
+    }
+    </div>
+
+
+
 }

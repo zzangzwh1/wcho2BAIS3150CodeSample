@@ -32,9 +32,9 @@ namespace wcho2BAIS3150CodeSample.Models
         }
         public bool ModifyStudent(Student student)
         {
-            bool success = false;
+          
             Students studentManager = new Students();
-           // bool success = studentManager.UpdateStudent(student);
+            bool success = studentManager.UpdateStudent(student);
             return success;
 
 
