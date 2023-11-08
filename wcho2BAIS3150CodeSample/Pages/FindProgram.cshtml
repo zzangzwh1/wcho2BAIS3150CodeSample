@@ -3,6 +3,13 @@
 @{
     ViewData["Title"] = "Find Program";
 }
+@section enrollStudentContentscriptContent
+    {
+    <script src="~/libraries/jquery/jquery.js"> </script>
+    <script src="~/libraries/jquery-validate/jquery.validate.js"></script>
+    <script src="~/libraries/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
+@section FindProgramContent    {
 
 
     <div class="divHeader">
@@ -10,7 +17,7 @@
         <form name="FindProgramForm" method="post">
             <div>
                 <lable for="_ProgramCode">Select Exists Program Code :  </lable>
-                <select id="_ProgramCode" name="SelectValue" style="width:100%;height:30px;">
+                <select id="_ProgramCode" name="SelectValue" value="@Model.SelectValue" style="width:100%;height:30px;">
 
                     <option value="" class="selectionProgramCode" name="">Select Program Code</option>
                     @foreach (var pCode in Model.ProgramCode)
@@ -30,6 +37,35 @@
             </div>
         </form>
 
+    </div>
+    <br />
+    <br />
+    <div class="messages">
+        @if (Model.ActivePrgoram != null)
+        {
+            <Table border="1">
+                <tr>
+                    <td>Student ID</td>
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td>Email</td>
+                    <td>Program Code</td>
+                </tr>
+
+                @foreach (var val in Model.ActivePrgoram.EnrolledStudents)
+                {
+                    <tr>
+                        <td>@val.StudentId</td>
+                        <td>@val.FirstName</td>
+                        <td>@val.lastName</td>
+                        <td>@val.Email</td>
+                        <td>@Model.ActivePrgoram.ProgramCode</td>
+                    </tr>
+                }
+
+
+            </Table>
+        }
     </div>
     <div>
         <div class="messages">
