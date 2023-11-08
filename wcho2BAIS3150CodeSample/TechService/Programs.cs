@@ -83,7 +83,7 @@ namespace wcho2BAIS3150CodeSample.TechService
                                 }
                                 Console.WriteLine();
 
-                                string s = "";
+                              
                                 while (reader.Read())
                                 {
                                     for (int i = 0; i < reader.FieldCount; i++)
@@ -123,9 +123,7 @@ namespace wcho2BAIS3150CodeSample.TechService
 
                 }
             }
-
-
-
+        
             return activeProgram;
 
         }

@@ -9,13 +9,13 @@ namespace wcho2BAIS3150CodeSample.Pages
     {
         public List<string> StudentId = new List<string>();
         public string Message { get; set; } = string.Empty;
-       
+
 
         [BindProperty]
         public string selectValue { get; set; } = string.Empty;
 
         public Student students = null;
-       // public List<string> studentInfoFields = new List<string>();
+        // public List<string> studentInfoFields = new List<string>();
 
         public void OnGet()
         {
@@ -25,16 +25,16 @@ namespace wcho2BAIS3150CodeSample.Pages
         public void OnPost()
         {
 
-            if (selectValue =="" || selectValue == null)
+            if (string.IsNullOrEmpty(selectValue))
             {
                 ModelState.AddModelError("selectValue", "selectValue Must be Selected!");
-               
+
             }
 
 
             if (ModelState.IsValid)
             {
-               
+
                 GetStudentID();
                 BCS requestDirector = new BCS();
 

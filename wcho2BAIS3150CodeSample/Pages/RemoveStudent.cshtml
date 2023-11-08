@@ -1,15 +1,38 @@
 ﻿@page
 @model wcho2BAIS3150CodeSample.Pages.RemoveStudentModel
 @{
+    ViewData["Title"] = "Remove Student";
+
 }
-@*@section RemoveStudentsContent
+@{
+    string data = "";
+}
+<script>
+    function validateForm(aForm) {
+        let selectValue = aForm.SelectValue;
+        if (selectValue.value === "") {
+            alert("Please select a Student ID");
+            return false; // Prevent the form from submitting
+        }
+        return true; // Form will submit if a valid option is selected
+    }
+</script>
+@section enrollStudentContentscriptContent
     {
+    <script src="~/libraries/jquery/jquery.js"> </script>
+    <script src="~/libraries/jquery-validate/jquery.validate.js"></script>
+    <script src="~/libraries/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
+
+@section RemoveStudentsContent
+    {
+
     <div class="divHeader">
-        <h1>Find/Remove Student</h1>
-        <form name="UpdateStudentForm" method="post" onsubmit="return validateForm(this);">
+        <h1>Remove Student</h1>
+        <form name="RemoveStudentForm" method="post" onsubmit="return validateForm(this);">
             <div>
                 <label for="SelectValue">Select Existing Student ID: </label>
-             <select id="SelectValue" name="SelectValue" style="width:100%; height:30px;">
+                <select id="SelectValue" name="SelectValue" style="width:100%; height:30px;">
                     <option value="" class="selectionProgramCode">Select Student ID</option>
                     @foreach (var id in Model.StudentId)
                     {
@@ -19,16 +42,17 @@
             </div>
             <br />
             <div>
-                <input type="submit" name="Submit" asp-page-handler="Student" value="Submit" class="buttons">
+                <input type="submit" name="Submit" asp-page-handler="Student" value="Find Student" class="buttons">
             </div>
         </form>
     </div>
-    <div class="messages">
-        <p style="color:red;">@Model.Message</p>
-    </div>
+    <br />
+    <br />
     <div class="messages">
         @if (Model.students != null)
         {
+
+
             <form method="post">
                 <table border="1">
                     <tr>
@@ -36,21 +60,24 @@
                         <td>First Name</td>
                         <td>Last Name</td>
                         <td>Email</td>
+                        <td>Delete</td>
 
                     </tr>
                     <tr>
-                        <td><input asp-for="_StudentID" value="@Model.students.StudentId" readonly /></td>
-                        <td><input asp-for="_FirstName"  /></td>
-                        <td><input asp-for="_LastName" /></td>
-                        <td><input asp-for="_Email" /></td>
+                        <td> <input asp-for="StudentId" name="StudentID" value="@Model.students.StudentId" style="border: none; background: none; outline: none; box-shadow: none; padding: 0;"> </td>
+                        <td> @Model.students.FirstName</td>
+                        <td> @Model.students.lastName</td>
+                        <td>@Model.students.Email</td>
 
-                        <td><input type="submit" name="Update" class="buttons" asp-page-handler="Update"></td>
+                        <td><input type="submit" name="Delete" class="buttons" value="Delete" asp-page-handler="Delete"></td>
                     </tr>
                 </table>
-                <span asp-validation-for="_FirstName" style="color: red;"></span><br />
-                <span asp-validation-for="_LastName" style="color: red;"></span><br />
-                <span asp-validation-for="_Email" style="color: red;"></span><br />
+
             </form>
         }
     </div>
-*@
+
+    <div class="messages">
+        <p style="color:red;">@Model.Message</p>
+    </div>
+    }

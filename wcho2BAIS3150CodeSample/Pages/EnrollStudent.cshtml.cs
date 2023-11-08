@@ -19,9 +19,11 @@ namespace wcho2BAIS3150CodeSample.Pages
         public string StudentID { set; get; } = string.Empty;
         [BindProperty]
         [Required]
+        [RegularExpression(@"^[A-Za-z\-']+$", ErrorMessage = "Invalid Name format, e.g) Mike")]
         public string _FirstName { set; get; } = string.Empty;
         [BindProperty]
         [Required]
+        [RegularExpression(@"^[A-Za-z\-']+$", ErrorMessage = "Invalid Name format, e.g) Cho")]
         public string LastName { set; get; } = string.Empty;
 
         [BindProperty]
@@ -34,11 +36,11 @@ namespace wcho2BAIS3150CodeSample.Pages
         public string Message { set; get; } = string.Empty;
         public void OnGet()
         {
-          
+
             GetProgramCode();
             Message = "Please Fill data into the input field";
         }
-        public void OnPost() 
+        public void OnPost()
         {
             BCS requestDirector = new BCS();
             Student accepetedStudent = new()
@@ -49,15 +51,14 @@ namespace wcho2BAIS3150CodeSample.Pages
                 Email = Email
 
             };
-         
 
-            /* Models.Program p = new Models.Program();
-             p.ProgramCode = ;*/
+
+         
             bool confirmation = requestDirector.EnrollStudent(accepetedStudent, programCode);
 
             if (ModelState.IsValid && confirmation)
             {
-               
+
                 Message = " ***  Successs ***";
                 GetProgramCode();
                 StudentID = string.Empty;
@@ -69,12 +70,12 @@ namespace wcho2BAIS3150CodeSample.Pages
             }
             else
             {
-                
+
                 GetProgramCode();
-                Message = "** Faill!! ** ";
+                Message = " Fail Student ID is Exists! ";
             }
 
-         
+
 
         }
         public void GetProgramCode()
@@ -83,9 +84,6 @@ namespace wcho2BAIS3150CodeSample.Pages
             string query = @"select ProgramCode from Program ";
             programCodes = programs.GetProgramCode(query);
         }
-   /*     public void isStudentIdExist()
-        {
-            Students studentId = new Students();
-        }*/
+     
     }
 }

@@ -31,7 +31,7 @@ namespace wcho2BAIS3150CodeSample.Pages
         [BindProperty]
         public string _StudentID { get; set; }
 
-        [BindProperty]       
+        [BindProperty]
         [RegularExpression(@"^(?:[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})?$", ErrorMessage = "Invalid email format, e.g., wcho2@nait.ca")]
         public string? _Email { get; set; }
 
@@ -42,7 +42,7 @@ namespace wcho2BAIS3150CodeSample.Pages
         }
 
         public void OnPostStudent()
-        {          
+        {
 
             BCS requestDirector = new BCS();
             students = requestDirector.FindStudent(SelectValue);
@@ -51,27 +51,29 @@ namespace wcho2BAIS3150CodeSample.Pages
 
         public void OnPostUpdate()
         {
-    
 
-            students = new() { 
-             StudentId = _StudentID,
-             Email =_Email,
-             FirstName = _FirstName,
-             lastName =_LastName
+            students = new()
+            {
+                StudentId = _StudentID,
+                Email = _Email,
+                FirstName = _FirstName,
+                lastName = _LastName
 
             };
             BCS requestDirector = new BCS();
             bool confirmation = requestDirector.ModifyStudent(students);
-            // int count = 0; 
+       
             if (ModelState.IsValid || confirmation)
             {
-                
+           
                 GetStudentID();
-                Message = "Students Info Is Updated";
+                students = null;
+                 Message = "Students Info Is Updated";
+                //students.FirstName = "";
             }
             else
             {
-                GetStudentID();             
+                GetStudentID();
                 Message = "Invalid";
             }
         }

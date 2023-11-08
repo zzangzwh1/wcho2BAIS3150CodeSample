@@ -4,3 +4,41 @@
     ViewData["Title"] = "Find Program";
 }
 
+@section FindProgramContent
+
+    {
+    <div class="divHeader">
+        <h1>Find Program</h1>
+        <form name="FindProgramForm" method="post">
+            <div>
+                <lable for="_ProgramCode">Select Exists Program Code :  </lable>
+                <select id="_ProgramCode" name="SelectValue" style="width:100%;height:30px;">
+
+                    <option value="" class="selectionProgramCode" name="">Select Program Code</option>
+                    @foreach (var pCode in Model.ProgramCode)
+                    {
+
+                        <option value="@pCode" class="selectionProgramCode">@pCode</option>
+
+                    }
+                </select>
+
+
+            </div>
+            <br />
+            <div>
+                <br />
+                <input type="submit" name="Submit" value="Find Program" class="buttons">
+            </div>
+        </form>
+
+    </div>
+    <div>
+        <div class="messages">
+            <p style="color:red;"> @Model.Message </p>
+
+
+        </div>
+
+    </div>
+}

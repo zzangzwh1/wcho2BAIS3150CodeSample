@@ -18,38 +18,38 @@ namespace wcho2BAIS3150CodeSample.Pages
         }
         public void OnPost()
         {
-            if(programCode== null || programCode.Length == 0)
+          
+            if (string.IsNullOrEmpty(programCode))
             {
                 ModelState.AddModelError("programCode", "programCode is required");
             }
-            if(description== null || description.Length == 0)
+            if(string.IsNullOrEmpty(description))
             {
                 ModelState.AddModelError("description", "description is required");
             }
 
-                BCS requestDirector = new BCS();
-                Models.Program programs = new()
-                {
-                    ProgramCode = programCode,
-                    Description = description
+            BCS requestDirector = new BCS();
+            Models.Program programs = new()
+            {
+                ProgramCode = programCode,
+                Description = description
 
-                };
-              bool isValid =  requestDirector.CreateProgram(programs.ProgramCode, programs.Description);
-                if (isValid)
-                {
-                    Message = "Success";
-                }
-                else
-                {
-                    Message = "Fail";
-                }
+            };
+            bool isValid = requestDirector.CreateProgram(programs.ProgramCode, programs.Description);
+
+            if (ModelState.IsValid && isValid)
+            {
+            
+              
+               Message = "Successsfully Program is Created!";
+              
                 programCode = string.Empty;
                 description = string.Empty;
               
             }
             else
             {
-                Message = "Fail Try Again!";
+                Message = "Program Code is exists Please Try Again!";
             }
         }
     }

@@ -45,10 +45,11 @@ namespace wcho2BAIS3150CodeSample.Models
             bool success = studentManager.DeleteStudent(studentId);
             return success;
         }
-        public Program FindProgram(string findProgramCode)
+        public Models.Program FindProgram(string findProgramCode)
         {
             Programs programManager = new Programs();
-            Program activeProgram = programManager.GetProgram(findProgramCode);
+            Models.Program activeProgram = programManager.GetProgram(findProgramCode);
+
 
             return activeProgram;
         }
