@@ -61,6 +61,7 @@ namespace wcho2BAIS3150CodeSample.Pages
 
                 Message = " ***  Successs ***";
                 GetProgramCode();
+                
                 StudentID = string.Empty;
                 _FirstName = string.Empty;
                 LastName = string.Empty;

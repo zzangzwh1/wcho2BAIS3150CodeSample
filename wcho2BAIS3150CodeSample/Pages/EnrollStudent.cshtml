@@ -21,25 +21,26 @@
         <form name="enrollForm" method="post" >
             <div>
                 <lable for="_StudentID">Student ID :  </lable>
-                <input asp-for="StudentID" name="StudentID" id="_StudentID" class="inputText"  />
+                <input asp-for="StudentID" name="StudentID" id="_StudentID" value="@Model.StudentID" class="inputText"  />
 
 
             </div>
             <div>
                 <label for="_FirstName">FirstName: </label>
-                <input asp-for="_FirstName"  class="inputText" id="_FirstName" />
+                <input asp-for="_FirstName"  class="inputText" value="@Model._FirstName" id="_FirstName" />
 
             </div>
             <div>
                 <label for="_LastName">Last Name: </label>
-                <input asp-for="LastName" name="LastName" class="inputText" id="_LastName" />
+                <input asp-for="LastName" name="LastName" value="@Model.LastName" class="inputText" id="_LastName" />
 
             </div>
             <div>
                 <div>
                     <label for="_Email">Email: </label>
-                    <input asp-for="Email" name="Email" class="inputText" id="_Email" />
+                    <input asp-for="Email" name="Email" value="@Model.Email" class="inputText" id="_Email" />
 
+                  
                 </div>
 
             </div>
