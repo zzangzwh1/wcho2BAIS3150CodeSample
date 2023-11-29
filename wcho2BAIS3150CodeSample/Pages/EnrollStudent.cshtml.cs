@@ -82,8 +82,8 @@ namespace wcho2BAIS3150CodeSample.Pages
         public void GetProgramCode()
         {
             Programs programs = new Programs();
-            string query = @"select ProgramCode from Program ";
-            programCodes = programs.GetProgramCode(query);
+           // string query = @"select ProgramCode from Program ";
+            programCodes = programs.GetProgramCode();
         }
      
     }

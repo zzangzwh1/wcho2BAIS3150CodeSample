@@ -8,7 +8,21 @@ namespace wcho2BAIS3150CodeSample.TechService
 {
     public class Programs
     {
+        private static string? _connectionString = @"Persist Security Info=False; Server=dev1.baist.ca; Database=wcho2; ";
+        // private string? connectionString = @"Persist Security Info=False; Server=dev1.baist.ca; Database=wcho2; User Id=wcho2; password=Whdnjsgur1!; ";
+        //public static string connectionString = @"Persist Security Info=false; Integrated Security= true;  database= DataConnect; server=(localdb)\Local; ";
 
+        public Programs()
+        {
+            // Constructor Logic
+            ConfigurationBuilder databaseUserBuilder = new ConfigurationBuilder();
+            databaseUserBuilder.SetBasePath(Directory.GetCurrentDirectory());
+            databaseUserBuilder.AddJsonFile("appsettings.json");
+            IConfiguration databaseUsersConfiguration = databaseUserBuilder.Build();
+            _connectionString = databaseUsersConfiguration.GetConnectionString("BAIST3150");
+            //  _connectionString = databaseUsersConfiguration.GetConnectionString("BAIST3150")!; //null forgiving operator
+
+        }
 
         #region AddProgram
         public bool AddProgram(string? programCode, string? description)
@@ -22,7 +36,7 @@ namespace wcho2BAIS3150CodeSample.TechService
                 description = null;
             }
 
-            using (SqlConnection conn = new SqlConnection(Students.connectionString))
+            using (SqlConnection conn = new SqlConnection(_connectionString))
             {
                 conn.Open();
                 using (SqlCommand command = new SqlCommand("AddProgram", conn))
@@ -62,7 +76,7 @@ namespace wcho2BAIS3150CodeSample.TechService
             Students students = new Students();
             Models.Program activeProgram = new Models.Program();
 
-            using (SqlConnection conn = new SqlConnection(Students.connectionString))
+            using (SqlConnection conn = new SqlConnection(_connectionString))
             {
                 conn.Open();
                 using (SqlCommand command = new SqlCommand("GetProgram", conn))
@@ -132,14 +146,15 @@ namespace wcho2BAIS3150CodeSample.TechService
 
         #region GetProgramCode for the DropList
 
-        public List<string> GetProgramCode(string query)
+        public List<string> GetProgramCode()
         {
             List<string> values = new List<string>();
-            using (SqlConnection conn = new SqlConnection(Students.connectionString))
+            using (SqlConnection conn = new SqlConnection(_connectionString))
             {
                 conn.Open();
-                using (SqlCommand command = new SqlCommand(query, conn))
+                using (SqlCommand command = new SqlCommand("GetProgramCode", conn))
                 {
+                    command.CommandType = CommandType.StoredProcedure;
                     try
                     {
 

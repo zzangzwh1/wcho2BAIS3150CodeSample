@@ -6,14 +6,26 @@ namespace wcho2BAIS3150CodeSample.TechService
 {
     public class Students
     {
-          public static string connectionString = @"Persist Security Info=False; Server=dev1.baist.ca; Database=wcho2; User Id=wcho2; password=Whdnjsgur1!; ";
+         private static string? connectionString = @"Persist Security Info=False; Server=dev1.baist.ca; Database=wcho2; ";
+       // private string? connectionString = @"Persist Security Info=False; Server=dev1.baist.ca; Database=wcho2; User Id=wcho2; password=Whdnjsgur1!; ";
         //public static string connectionString = @"Persist Security Info=false; Integrated Security= true;  database= DataConnect; server=(localdb)\Local; ";
 
+        public Students()
+        {
+            // Constructor Logic
+            ConfigurationBuilder databaseUserBuilder = new ConfigurationBuilder();
+            databaseUserBuilder.SetBasePath(Directory.GetCurrentDirectory());
+            databaseUserBuilder.AddJsonFile("appsettings.json");
+            IConfiguration databaseUsersConfiguration = databaseUserBuilder.Build();
+            connectionString = databaseUsersConfiguration.GetConnectionString("BAIST3150");
+            //  _connectionString = databaseUsersConfiguration.GetConnectionString("BAIST3150")!; //null forgiving operator
+
+        }
         public string? ProgramCode { set; get; } = "";
       //  public List<string> StudentInfoField = new List<string>(); 
 
         #region StudentID
-        public List<string> GetSutdentID(string query) 
+        public List<string> GetSutdentID() 
         {
 
             List<string> studentIDs = new List<string>();
@@ -22,9 +34,9 @@ namespace wcho2BAIS3150CodeSample.TechService
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                using (SqlCommand command = new SqlCommand(query, conn))
+                using (SqlCommand command = new SqlCommand("GetStudentID", conn))
                 {
-                  
+                    command.CommandType = CommandType.StoredProcedure;
                     try
                     {                       
 

@@ -54,8 +54,8 @@ namespace wcho2BAIS3150CodeSample.Pages
         public void GetStudentID()
         {
             Students studentID = new Students();
-            string query = @"select StudentID From Student ";
-            StudentId = studentID.GetSutdentID(query);
+           // string query = @"select StudentID From Student ";
+            StudentId = studentID.GetSutdentID();
         }
     }
 }
