@@ -33,7 +33,6 @@ namespace wcho2BAIS3150CodeSample.Pages
 
             }
           
-
             if (ModelState.IsValid )
             {
                 string s = "";
