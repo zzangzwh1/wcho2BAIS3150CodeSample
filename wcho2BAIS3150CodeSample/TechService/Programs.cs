@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using wcho2BAIS3150CodeSample.Models;
 using Microsoft.Data.SqlClient;
-using wcho2BAIS3150CodeSample.Models;
+
 
 
 namespace wcho2BAIS3150CodeSample.TechService

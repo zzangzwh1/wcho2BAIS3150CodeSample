@@ -31,8 +31,8 @@ namespace wcho2BAIS3150CodeSample.Pages
             {
                 ModelState.AddModelError("SelectValue", "SelectValue Must be Selected!");
 
-            }
-          
+            }          
+
             if (ModelState.IsValid )
             {
                 string s = "";

@@ -39,9 +39,13 @@ namespace wcho2BAIS3150CodeSample.Pages
 
             if (ModelState.IsValid && isValid)
             {
-            
-              
-               Message = "Successsfully Program is Created!";
+               
+               /* if (!isValid)
+                {
+                    Message = "Not Valid";
+                }*/
+
+                Message = "Successsfully Program is Created!";
               
                 programCode = string.Empty;
                 description = string.Empty;

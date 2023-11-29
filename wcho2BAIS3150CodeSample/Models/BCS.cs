@@ -7,7 +7,7 @@ namespace wcho2BAIS3150CodeSample.Models
     {
         public bool EnrollStudent(Student acceptedStudent, string programCode)
         {
-        
+
             Students studentManager = new Students();
             bool success = studentManager.AddStudent(acceptedStudent, programCode);
 
@@ -32,7 +32,7 @@ namespace wcho2BAIS3150CodeSample.Models
         }
         public bool ModifyStudent(Student student)
         {
-          
+
             Students studentManager = new Students();
             bool success = studentManager.UpdateStudent(student);
             return success;
@@ -53,5 +53,14 @@ namespace wcho2BAIS3150CodeSample.Models
 
             return activeProgram;
         }
+        public DatabaseUser FindDatabaseUser()
+        {
+            DatabaseUsers dbUsers = new DatabaseUsers();
+            DatabaseUser currentDBUser = dbUsers.GetDatabaseUser();
+
+
+            return currentDBUser;
+        }
+
     }
 }
