@@ -8,7 +8,8 @@ namespace wcho2BAIS3150CodeSample.TechService
 {
     public class Programs
     {
-        private static string? _connectionString = @"Persist Security Info=False; Server=dev1.baist.ca; Database=wcho2; ";
+        private static string? _connectionString;
+            //= @"Persist Security Info=False; Server=dev1.baist.ca; Database=wcho2; ";
         // private string? connectionString = @"Persist Security Info=False; Server=dev1.baist.ca; Database=wcho2; User Id=wcho2; password=Whdnjsgur1!; ";
         //public static string connectionString = @"Persist Security Info=false; Integrated Security= true;  database= DataConnect; server=(localdb)\Local; ";
 
